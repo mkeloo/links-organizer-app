@@ -50,4 +50,6 @@ jobs:
           cache-to: type=gha,mode=max
 
       - name: Show pushed digest
-        run: echo "Pushed: ${{ env.IMAGE_NAME }}@${{ steps.build.outputs.digest }}"
+        run: echo "Pushed: $IMAGE_NAME@${{ steps.build.outputs.digest }}"
+        env:
+          IMAGE_NAME: ${{ env.IMAGE_NAME }}
