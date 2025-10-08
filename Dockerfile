@@ -1,16 +1,15 @@
-# --- build stage ---
-FROM node:20-bookworm AS build
-WORKDIR /app
-COPY package*.json ./
-RUN npm ci
-COPY . .
-RUN npm run build
-
 # --- run stage ---
 FROM node:20-bookworm
 WORKDIR /app
-ENV NODE_ENV=production PORT=3000 HOST=0.0.0.0
+
+ENV NODE_ENV=production
+ENV PORT=3000
+ENV HOST=0.0.0.0
+
+# copy standalone output & static assets
 COPY --from=build /app/.next/standalone ./
+COPY --from=build /app/.next/static ./.next/static
 COPY --from=build /app/public ./public
+
 EXPOSE 3000
-CMD ["node", ".next/standalone/server.js"]
+CMD ["node", "server.js"]
