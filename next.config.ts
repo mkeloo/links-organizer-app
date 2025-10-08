@@ -1,10 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // ✅ Required for Docker standalone builds
+  // Required for Docker standalone builds
   output: "standalone",
 
-  // ✅ Optional but recommended
+  // Optional but recommended
   reactStrictMode: true,
 
   // (Optional) You can add future or experimental flags if needed:
