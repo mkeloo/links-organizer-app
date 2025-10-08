@@ -9,9 +9,8 @@ RUN npm run build
 # --- run stage ---
 FROM node:20-bookworm
 WORKDIR /app
-ENV NODE_ENV=production PORT=3000
-# copy standalone server + required assets
+ENV NODE_ENV=production PORT=3000 HOST=0.0.0.0
 COPY --from=build /app/.next/standalone ./
 COPY --from=build /app/public ./public
 EXPOSE 3000
-CMD ["node", "server.js"]
+CMD ["node", ".next/standalone/server.js"]
