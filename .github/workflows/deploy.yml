@@ -2,7 +2,7 @@ name: Build & Push Image (GHCR)
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -42,7 +42,6 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: .
-          platforms: linux/amd64
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
@@ -50,4 +49,6 @@ jobs:
           cache-to: type=gha,mode=max
 
       - name: Show pushed digest
-        run: echo "Pushed: ghcr.io/${{ github.repository }}/links-organizer-app@${{ steps.build.outputs.digest }}"
+        shell: bash
+        run: |
+          echo "Pushed: $IMAGE_NAME@${{ steps.build.outputs.digest }}"
