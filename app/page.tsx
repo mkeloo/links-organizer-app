@@ -22,7 +22,7 @@ export default function Page() {
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 text-gray-900 dark:bg-[#0f1117] dark:text-gray-100 px-6">
       <div className="w-full max-w-md bg-white dark:bg-[#1a1d27] rounded-2xl shadow-2xl p-8 space-y-6 border border-gray-200 dark:border-gray-700">
         <h1 className="text-2xl font-bold text-center text-gray-800 dark:text-blue-400">
-          Next.js Test Dashboard!
+          Next.js Test Dashboard! Test.
         </h1>
 
         {/* Server Action Section */}
